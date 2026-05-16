@@ -1,0 +1,4 @@
+umbrel-tunnel-app/umbrel-tunnel
+vps-server/vps-server
+.env
+*.swp

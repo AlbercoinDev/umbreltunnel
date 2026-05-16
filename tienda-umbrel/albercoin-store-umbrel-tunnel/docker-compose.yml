@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: albercoin-store-umbrel-tunnel_server_1
+      APP_PROTOCOL: http
+      APP_PORT: 3652
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    image: ghcr.io/albercoindev/umbrel-tunnel:latest
+    restart: on-failure
+    stop_grace_period: 1m
+    volumes:
+      - ${APP_DATA_DIR}:/data
+    environment:
+      LISTEN_ADDR: ":3652"
+      DATA_DIR: "/data"
+      UI_AUTH_USER: ""
+      UI_AUTH_PASS: ""
+      WG_INTERFACE: "umbreltun"
+    cap_add:
+      - NET_ADMIN
+      - SYS_PTRACE
+      - NET_RAW
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1
+    devices:
+      - "/dev/net/tun:/dev/net/tun"

@@ -1,0 +1,54 @@
+manifestVersion: 1
+id: albercoin-store-umbrel-tunnel
+name: Umbrel Tunnel
+tagline: Expón tus apps de Umbrel en internet via WireGuard
+icon: web/icon.svg
+category: networking
+version: "1.0.0"
+description: >-
+  Umbrel Tunnel te permite exponer cualquier app de tu Umbrel en internet (clearnet)
+  a través de un túnel WireGuard hacia tu propio VPS.
+
+
+  La aplicación genera automáticamente un par de claves WireGuard, se registra
+  en tu VPS, establece el túnel VPN, y te permite crear túneles individuales
+  para cada app que quieras exponer. Cada túnel recibe un subdominio público
+  con HTTPS automático (vía Caddy + Let's Encrypt en el VPS).
+
+
+  ✦ Configuración guiada paso a paso desde el panel web
+
+  ✦ Túneles ilimitados — cada app en su propio subdominio
+
+  ✦ HTTPS automático con Let's Encrypt
+
+  ✦ No necesitas abrir puertos en tu router ni tener IP pública
+
+  ✦ WireGuard se ejecuta dentro del contenedor — todo en una app
+
+  ✦ Descarga o copia tu configuración WireGuard
+
+
+  Requisitos:
+
+  - Un VPS con Ubuntu/Debian donde instalar Umbrel Tunnel Server
+
+  - Un dominio apuntando al VPS (para los subdominios de cada túnel)
+
+  - Puertos 80/443 y 51820/UDP abiertos en el VPS
+
+
+  Comando de instalación del servidor VPS:
+
+  curl -sL https://github.com/AlbercoinDev/umbreltunnel/raw/main/vps-server/install.sh | bash
+developer: AlbercoinDev
+website: https://github.com/AlbercoinDev/Tienda-Umbrel-Albercoin
+dependencies: []
+repo: https://github.com/AlbercoinDev/umbreltunnel
+support: https://github.com/AlbercoinDev/Tienda-Umbrel-Albercoin/issues
+port: 3652
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+submitter: AlbercoinDev

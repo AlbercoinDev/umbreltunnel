@@ -1,0 +1,7 @@
+{
+  admin 0.0.0.0:2019
+}
+
+{$DOMAIN} {
+  reverse_proxy api:8081
+}

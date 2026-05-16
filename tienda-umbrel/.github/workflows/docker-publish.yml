@@ -1,0 +1,37 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "albercoin-store-umbrel-tunnel/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: albercoin-store-umbrel-tunnel
+          push: true
+          tags: |
+            ghcr.io/albercoindev/albercoin-store-umbrel-tunnel:latest
+            ghcr.io/albercoindev/albercoin-store-umbrel-tunnel:${{ github.sha }}
