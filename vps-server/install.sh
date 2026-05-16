@@ -22,8 +22,8 @@ echo "Downloading Umbrel Tunnel VPS server..."
 rm -rf "$DIR"
 curl -sL "https://github.com/$REPO/archive/refs/heads/$BRANCH.tar.gz" | tar xz
 mv "umbreltunnel-$BRANCH" "$DIR"
-rm -f "$DIR/install.sh" "$DIR/.gitignore"
-cd "$DIR"
+cd "$DIR/vps-server"
+rm -f install.sh .gitignore
 
 if [ ! -f .env ]; then
   while [ -z "${domain:-}" ]; do
